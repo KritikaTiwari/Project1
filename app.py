@@ -6,13 +6,13 @@ import pickle
 
 
 app = Flask(__name__)
-model = pickle.load(open('linearregression.pkl','rb')) 
+model = pickle.load(open('house.pkl','rb')) 
 
 
 @app.route('/')
 def home():
   
-    return render_template("index.html")
+    return render_template("Index.html")
   
 @app.route('/predict',methods=['GET'])
 def predict():
@@ -27,7 +27,7 @@ def predict():
     prediction = model.predict([[exp]])
     
         
-    return render_template('index.html', prediction_text='Regression Model  has predicted salary for given experinace is : {}'.format(prediction))
+    return render_template('Index.html', prediction_text='Regression Model  has predicted price for given square foot is : {}'.format(prediction))
 
 
 if __name__ == "__main__":
